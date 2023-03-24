@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knickel <knickel@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 06:21:44 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/22 13:01:35 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/24 14:25:40 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	ft_printf(const char *str, ...)
 	str_ptr = ft_strchr(str_ptr, '%') + 1;
 	while (str_ptr != NULL)
 	{
-		if (!ft_check_type(*str_ptr, &vars))
+		if (!ft_print_by_type(*str_ptr, &vars))
 			return (0);
 		str_ptr = ft_strchr(str_ptr, '%') + 1;
 	}
 	va_end(vars);
 }
 
-int	ft_check_type(const char c, va_list *vars)
+int	ft_print_by_type(const char c, va_list *vars)
 {
 	if (c == 'c')
 		return (handle_print_char(vars));
